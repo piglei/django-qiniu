@@ -1,7 +1,7 @@
 django-qiniu
 ============
 
-This package interages `Qiniu`_ could storage with `Django`_ framework. You
+This package interages `Qiniu`_ cloud storage with `Django`_ framework. You
 must install `qiniu's python-sdk`_ before using this package.
 
 Configuration
@@ -16,13 +16,13 @@ Add below lines in your django project's settings.py: ::
 How To Use
 ----------
 
-Use django-qiniu in your django project is very simple.
+Use django-qiniu in your django project is very simple. First of all, your must 
+copy **django_qiniu** directory to your PYTHON_PATH so you can import it.
 
 1. Add Field To Your Model
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Add `QiniuFileField` or `QiniuImageField` to your models.py to store file in
-qiniu. ::
+To get started, you should add `QiniuFileField` or `QiniuImageField` to your models.py. ::
 
     from django.db import models
     from django_qiniu.fields import QiNiuImageField, QiniuFileField
@@ -46,24 +46,27 @@ qiniu. ::
         qiniu_file = QiNiuFileField(upload_to=qiniu_key_maker_file, null=True)
         qiniu_image = QiNiuImageField(upload_to=qiniu_key_maker_image, null=True)
 
-QiniuFileField's init method uses these parameters:
+QiniuFileField's __init__ method receives some parameters:
 
-- upload_to, a function to generate qiniu key, see upper codes.
-- upload_bucket, bucket_name, if not given, will use settings.QINIU_BUCKET_DEFAULT as default.
-- domain, your qiniu static domain ,if not givin, will use ('%s.qiniudn.com' % upload_bucket)
-  as default.
+- **upload_to**, a function to generate qiniu file key.
+- **upload_bucket**, bucket_name, if not given, will use settings.QINIU_BUCKET_DEFAULT as default.
+- **domain**, your customized qiniu static domain, will use ('%s.qiniudn.com' % upload_bucket)
+  as default if not given.
 
 QiniuImageField is a subclass of QiniuFileField and designed to store especially image files.
 
 2. Save your uploaded file in views.py
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Save your uploaded file to qiniu server is very simple:
+
 ::
 
     f = request.FILES['file']
-    obj = Photo()   
+    obj = Photo()
     obj.qiniu_file = f
-    # Calling save method will upload this file to qiniu server
+    # Calling save method will upload this file to qiniu server and requires network
+    # connection
     obj.save()
 
 How to use saved qiniu instance?
