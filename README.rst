@@ -1,7 +1,8 @@
 django-qiniu
 ============
 
-This package interages `Qiniu`_ could storage with `Django`_ framework.
+This package interages `Qiniu`_ could storage with `Django`_ framework. You
+must install `qiniu's python-sdk`_ before using this package.
 
 Configuration
 -------------
@@ -57,6 +58,8 @@ QiniuImageField is a subclass of QiniuFileField and designed to store especially
 2. Save your uploaded file in views.py
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+::
+
     f = request.FILES['file']
     obj = Photo()   
     obj.qiniu_file = f
@@ -84,4 +87,5 @@ For more information, visit(http://docs.qiniu.com/api/v6/image-process.html)
 
 .. _Qiniu: http://www.qiniu.com
 .. _Django: https://www.djangoproject.com/
+.. _Qiniu's python-sdk: https://github.com/qiniu/python-sdk
 
