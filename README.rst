@@ -7,7 +7,9 @@ must install `qiniu's python-sdk`_ before using this package.
 Configuration
 -------------
 
-Add below lines in your django project's settings.py: ::
+Add below lines in your django project's settings.py:
+
+.. code:: python
 
     QINIU_ACCESS_KEY = 'your_key'
     QINIU_SECRET_KEY = 'your_secret'
@@ -22,7 +24,9 @@ copy **django_qiniu** directory to your PYTHON_PATH so you can import it.
 1. Add Field To Your Model
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To get started, you should add `QiniuFileField` or `QiniuImageField` to your models.py. ::
+To get started, you should add `QiniuFileField` or `QiniuImageField` to your models.py.
+
+.. code:: python
 
     from django.db import models
     from django_qiniu.fields import QiNiuImageField, QiniuFileField
@@ -48,9 +52,9 @@ To get started, you should add `QiniuFileField` or `QiniuImageField` to your mod
 
 QiniuFileField's __init__ method receives some parameters:
 
-- **upload_to**, a function to generate qiniu file key.
-- **upload_bucket**, bucket_name, if not given, will use settings.QINIU_BUCKET_DEFAULT as default.
-- **domain**, your customized qiniu static domain, will use ('%s.qiniudn.com' % upload_bucket)
+- ``upload_to``, a function to generate qiniu file key.
+- ``upload_bucket``, bucket_name, if not given, will use settings.QINIU_BUCKET_DEFAULT as default.
+- ``domain``, your customized qiniu static domain, will use ('%s.qiniudn.com' % upload_bucket)
   as default if not given.
 
 QiniuImageField is a subclass of QiniuFileField and designed to store especially image files.
@@ -60,7 +64,7 @@ QiniuImageField is a subclass of QiniuFileField and designed to store especially
 
 Save your uploaded file to qiniu server is very simple:
 
-::
+.. code:: python
 
     f = request.FILES['file']
     obj = Photo()
@@ -81,7 +85,9 @@ QiniuImageField
 ~~~~~~~~~~~~~~~
 
 For QiniuImageField, There is a convient method called `get_image_view` which is used
-to get thumbnails of your images, such as: ::
+to get thumbnails of your images, such as:
+
+.. code:: python
 
     instance.qiniu_image.get_image_view(mode=1, width=280, height=280, quality=75)
     instance.qiniu_image.get_image_view(mode=2, width=640, quality=75)
