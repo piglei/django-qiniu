@@ -1,3 +1,5 @@
+**NOTE: This package is outdated and unmaintained, please take a look at other modern packages like `django-qiniu-storage<https://github.com/glasslion/django-qiniu-storage>`_, which uses a better appoarch by customizing django storage class.**
+
 django-qiniu
 ============
 
@@ -97,4 +99,3 @@ For more information, visit(http://docs.qiniu.com/api/v6/image-process.html)
 .. _Qiniu: http://www.qiniu.com
 .. _Django: https://www.djangoproject.com/
 .. _Qiniu's python-sdk: https://github.com/qiniu/python-sdk
-
