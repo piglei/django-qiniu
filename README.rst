@@ -1,4 +1,4 @@
-**NOTE:** This package is outdated and unmaintained, please take a look at other modern packages like `django-qiniu-storage(https://github.com/glasslion/django-qiniu-storage), which uses a better appoarch by customizing django storage class.
+**NOTE:** This package is outdated and unmaintained, please take a look at other modern packages like django-qiniu-storage(https://github.com/glasslion/django-qiniu-storage), which uses a better appoarch by customizing django storage class.
 
 django-qiniu
 ============
